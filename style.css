@@ -1,0 +1,192 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --text-color: white;
+  --bg-url: url(./assets/bg-mobile.jpg);
+  --stroke-color: rgba(255, 255, 255, 0.5);
+  --surface-color: rgba(255, 255, 255, 0.05);
+  --surface-color-hover: rgba(0, 0, 0, 0.02);
+  --highlight-color: rgba(255, 255, 255, 0.2);
+  --switch-bg-url: url(./assets/Sun.svg);
+}
+
+.light {
+  --text-color: black;
+  --bg-url: url(./assets/bg-mobile-light.jpg);
+  --stroke-color: rgba(0, 0, 0, 0.5);
+  --surface-color: rgba(0, 0, 0, 0.05);
+  --surface-color-hover: rgba(0, 0, 0, 0.02);
+  --highlight-color: rgba(0, 0, 0, 0.1);
+  --switch-bg-url: url(./assets/Sun.svg);
+}
+
+body {
+  /*background-image: url(./assets/bg-mobile.jpg);
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: cover;*/
+
+  /*background: color image repeat position/size*/
+  background: var(--bg-url) no-repeat top center/cover;
+}
+
+body * {
+  font-family: "Edu AU VIC WA NT Hand";
+  font-style: normal;
+  color: var(--text-color);
+}
+
+#container {
+  width: 360px;
+  /*
+  border: 1px solid red;
+  a borda foi retirada porque ela não é necessária. deixei ela alí só para poder ter uma referência futura no caso eu necessite fazê-la de novo.
+
+  quando estamos iniciando podemos fazer bordas em todas as coisas para termos una noção do quê está acontecendo.
+  */
+  /* DEIXADO APENAS PARA REFERENCIAS FUTURAS:
+        ↓↓↓↓
+  margin-top: 56px;
+  margin-right: auto;
+  margin-bottom: 0;
+  margin-left: auto;
+  */
+  margin: 56px auto 0px;
+  /* os valores do margin vão na sequencia de um relógio, ou seja, de direita para esquerda: o primeiro valor do margin vai ser referente ao top, o segundo ao right, o terceiro ao bottom, o quarto ao left
+
+  se tivessem só 2 valores seria: o primeiro referente a top/bottom e o segundo referente a right/left
+
+  se tivessem só 3 valore seria: o primeiro referente ao top, o segundo referente a right/left, e o terceiro ao bottom (como vemos alí)
+  */
+  padding: 0 24px;
+}
+
+/* profile */
+
+#profile {
+  text-align: center;
+  padding: 24px;
+}
+
+#profile img {
+  width: 112px;
+}
+
+#profile p {
+  font-weight: 500;
+  line-height: 24px;
+  margin-top: 8px;
+}
+
+/* switch */
+#switch {
+  position: relative; /* o "absolute" (que esta no "switch-button") vai ser relativo a esse primeiro elemento "switch" porque ele esta' indicando que a  posicao e' relativa ) */
+  width: 64px;
+
+  margin: 4px auto;
+}
+#switch button {
+  width: 32px;
+  height: 32px;
+  background: white var(--switch-bg-url) no-repeat center;
+  border: 0;
+  border-radius: 50%;
+
+  position: absolute
+    /* ele faz uma sobreposição absoluta, ou seja, fica um em cima do outro*/;
+  top: 50%;
+  left: 0; /*top, leff, right,bottom são todas partes em que o elemento pode ser colocado naquela camada */
+  z-index: 1; /*se pegarmos um prédio como exemplo, o "button" vai ficar no andar 1 e o "span" continuará no andar 0. O "z-index" indica em qual andar aquele elemento deve ficar */
+  transform: translateY(-50%);
+}
+
+.light #switch button {
+  right: 0;
+  left: initial;
+}
+#switch span {
+  display: block;
+  width: 64px;
+  height: 24px;
+  background: var(--surface-color);
+  border: 1px solid var(--stroke-color);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 9999px;
+}
+
+/* links */
+
+ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  padding: 24px 0;
+}
+
+ul li a {
+  /*border: 1px solid red; <---- deixado aqui para referências futuras*/
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 16px 24px;
+
+  background: var(--surface-color);
+  border: 1px solid var(--stroke-color); /*rgbl= Red Green Blue Alpha.0 é a cor mais escura, preto absoluto. 255 é a cor mais forte daquela cor. Alpha é a transparencia. Ou seja, alí temos um branco (255 255 255) com 0.1/0.5 de transparência. A tranparência vai de 0 a 1 só, não mais que 1. */
+
+  border-radius: 100px; /* esse aqui é o que faz ele ficar redondinho nas laterais*/
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+
+  text-decoration: none;
+  font-weight: 400;
+
+  transition: background 0.2s;
+}
+/*dentro de UM ÚNICO "ul" existem vários "lis", (ul é o pai e lis são os filhos). Então tudo que você pedir para o ul fazer, isso vai ser aplicado a todos os lis*/
+
+/* esse de baixo "a:hover" quer dizer que quando eu passar o mouse em cima, ele vai mudar conforme as coisas  requesitadas */
+ul li a:hover {
+  background: var(--surface-color-hover);
+  border: 1.5px solid var(--text-color);
+}
+
+/*social links*/
+#social-links {
+  /*tudo que esta dentro dessas abas sera aplicado. esses aqui sao os icones dos social media*/
+  display: flex;
+  justify-content: center;
+  /*gap: 16px; nesse caso não vai precisar do gap porque o padding no ¨social-links a¨ já vai fazer com que o espaço entre eles seja suficiente */
+
+  padding: 24px 0;
+
+  font-size: 24px; /*isso se refere as figuras. elas vao ter um tamanho de 24px*/
+}
+
+#social-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+
+  transition: background 0.2s;
+  border-radius: 50%; /*o border-radius está aqui porque se ele estivesse no ¨a-hover¨, quando acontecesse a transição ia ficar um quadradinho transparente quando eu passasse encima o mouse. Visto que ele está aqui, então quando eu passar o mouse em sima, vai ficar um redondinho*/
+}
+
+#social-links a:hover {
+  background: var(--highlight-color);
+}
+
+footer {
+  padding: 24px 0;
+  text-align: center;
+  font-size: 14px;
+}
