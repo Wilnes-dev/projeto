@@ -41,7 +41,8 @@ body * {
 }
 
 #container {
-  width: 360px;
+  width: 100%;
+  max-width: 588px;
   /*
   border: 1px solid red;
   a borda foi retirada porque ela não é necessária. deixei ela alí só para poder ter uma referência futura no caso eu necessite fazê-la de novo.
