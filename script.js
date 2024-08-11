@@ -14,10 +14,16 @@ function toggleMode() {
   if (html.classList.contains("light")) {
     // se tiver light mode, adicionar a imagem light
     img.setAttribute("src", "./assets/avatar-light-w.png")
-    img.setAttribute("alt", "foto de wilnes sorrindo de frente com óculos de grau, usando blusa preta e um fundo branco")
+    img.setAttribute(
+      "alt",
+      "foto de wilnes sorrindo de frente com óculos de grau, usando blusa preta e um fundo branco"
+    )
   } else {
     // se tiver sem light mode, manter a imagem normal
-    img.setAttribute("src", "./assets/avatar - cópia.png")
-    img.setAttribute("alt", "foto de wilnes sorrindo de lado, usando blusa branca e fundo com rio e barcos.")
+    img.setAttribute("src", "./assets/avatar.png")
+    img.setAttribute(
+      "alt",
+      "foto de wilnes sorrindo de lado, usando blusa branca e fundo com rio e barcos."
+    )
   }
 }
