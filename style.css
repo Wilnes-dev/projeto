@@ -104,12 +104,19 @@ body * {
   left: 0; /*top, leff, right,bottom são todas partes em que o elemento pode ser colocado naquela camada */
   z-index: 1; /*se pegarmos um prédio como exemplo, o "button" vai ficar no andar 1 e o "span" continuará no andar 0. O "z-index" indica em qual andar aquele elemento deve ficar */
   transform: translateY(-50%);
+  animation: slide-back 0.2s;
 }
 
 .light #switch button {
-  right: 0;
-  left: initial;
+  /*right: 0;
+  left: initial; essas propriedades aqui nao vao ser mais utilizadas porque agora quando o user clicar, o switch vai acontecer como uma animatio*/
+  animation: slide-in 0.2s forwards; /*preciso colocar o nome que dei para a animation e em quanto tempo ela vai acontecer. O forwards significa que quando ele terminar a animation ele vai continuar com as mesmas propriedades do "to", ou seja, ele nao vai voltar para a impostazione iniziale*/
 }
+
+#switch button:hover {
+  outline: 8px solid var(--highlight-color);
+}
+
 #switch span {
   display: block;
   width: 64px;
@@ -193,7 +200,7 @@ footer {
   font-size: 14px;
 }
 
-/* media queries */
+/* media queries imagem de fundo baseado no dispositivo. é o tamamanho que vai ficar a tela pra cada dispositovo que for usado (ex: pc, celular, tablet...)*/
 
 @media (min-width: 700 px) {
   :root {
@@ -205,4 +212,23 @@ footer {
   }
   /* o media queries só funciona se tem essa linha no htmL: <meta name="viewport" content="width=device-width, initial scale 1.0" />
   viewport é toda parte visível do meu dispositivo */
+}
+
+/* animation */
+@keyframes slide-in /* é pro botão ir da esquerda para a direita*/ {
+  from {
+    left: 0;
+  }
+  to {
+    left: 50%;
+  }
+}
+@keyframes slide-back {
+  /* é pro botão ir da direita para a esquerda*/
+  from {
+    left: 50%;
+  }
+  to {
+    left: 0;
+  }
 }
