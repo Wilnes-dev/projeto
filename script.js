@@ -20,7 +20,7 @@ function toggleMode() {
     )
   } else {
     // se tiver sem light mode, manter a imagem normal
-    img.setAttribute("src", "./assets/avatar.png")
+    img.setAttribute("src", "./assets/avatar2.png")
     img.setAttribute(
       "alt",
       "foto de wilnes sorrindo de lado, usando blusa branca e fundo com rio e barcos."
